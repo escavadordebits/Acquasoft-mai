@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-from main import get_clientes,Post_DadosApi
+from main import get_clientes,Post_DadosApi,Get_DadosAPI
 app = Flask(__name__)
 formData = {}
 DadosApi ={}
@@ -12,8 +12,11 @@ def index():
             "Token": request.form['Token'],
             "Instancia": request.form['Instancia'], 
             "Registros": request.form['Registros'],
-            "DataLigar": request.form['DataLigar']}
+            "DataLigar": request.form['DataLigar'],}
         Post_DadosApi(DadosApi)
+    if request.method == 'GET':
+        Get_DadosAPI()
+
 
 
 

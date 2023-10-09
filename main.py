@@ -32,8 +32,17 @@ clientes = list()
 def Post_DadosApi(DadosAPI):
     
      cursor = cnxn.cursor()
-     InsereDadosApi =f"INSERTO INTO  DadosAPI(Token, Instancia, Registros,DataLigar) VALUES ({DadosAPI.Token},{DadosAPI.Instancia},'{DadosAPI.Registros}','{DadosAPI.DataLigar})';"
+     Token = DadosAPI['Token']
+     InsereDadosApi  =f"INSERT INTO  DadosAPI(Token, Instancia, Registros,DataLigar) VALUES ('{DadosAPI['Token']}','{DadosAPI['Instancia']}','{DadosAPI['Registros']}','{DadosAPI['DataLigar']}')"
      cursor.execute(InsereDadosApi)
+     cursor.commit()
+
+def Get_DadosAPI():
+     cursor = cnxn.cursor()
+     GetDadosAPI  =f"Select *  from   DadosAPI"
+     cursor.execute(GetDadosAPI)
+     cursor.commit()
+        
 
 
 @app.route("/clientes", methods=["GET"])
