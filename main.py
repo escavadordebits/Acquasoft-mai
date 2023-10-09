@@ -30,11 +30,10 @@ print("Conexão Bem Sucedida")
 clientes = list()
 
 def Post_DadosApi(DadosAPI):
+    
      cursor = cnxn.cursor()
-     InsereDadosApi = cursor.execute(
-        qinsert = f"insert DadosAPI values({DadosAPI[0]},{DadosAPI[1]},'{DadosAPI[2]}','{DadosAPI[3]}';"
-
-    )
+     InsereDadosApi =f"INSERTO INTO  DadosAPI(Token, Instancia, Registros,DataLigar) VALUES ({DadosAPI.Token},{DadosAPI.Instancia},'{DadosAPI.Registros}','{DadosAPI.DataLigar})';"
+     cursor.execute(InsereDadosApi)
 
 
 @app.route("/clientes", methods=["GET"])

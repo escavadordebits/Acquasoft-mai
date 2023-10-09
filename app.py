@@ -2,16 +2,17 @@ from flask import Flask, request, render_template
 from main import get_clientes,Post_DadosApi
 app = Flask(__name__)
 formData = {}
-DadosApi = list()
+DadosApi ={}
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        Token = request.form['Token']
-        Instancia = request.form['Instancia']
-        Registros =request.form['Registros']
-        DataLigar =request.form['DataLigar']
-        DadosApi.append({Token,Instancia,Registros,DataLigar})
+      
+        DadosApi = {
+            "Token": request.form['Token'],
+            "Instancia": request.form['Instancia'], 
+            "Registros": request.form['Registros'],
+            "DataLigar": request.form['DataLigar']}
         Post_DadosApi(DadosApi)
 
 
