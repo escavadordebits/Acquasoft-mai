@@ -1,4 +1,4 @@
-from flask import Flask, make_response, jsonify, request, abort
+from flask import Flask, make_response, jsonify, request,render_template, abort
 from pip._vendor import requests
 from flask_cors import CORS
 import pyodbc
@@ -28,6 +28,7 @@ cnxn = pyodbc.connect(
 print("Conexão Bem Sucedida")
 
 clientes = list()
+dadosapi = list()
 
 def Post_DadosApi(DadosAPI):
     
@@ -39,9 +40,19 @@ def Post_DadosApi(DadosAPI):
 
 def Get_DadosAPI():
      cursor = cnxn.cursor()
-     GetDadosAPI  =f"Select *  from   DadosAPI"
+     GetDadosAPI  =f"select Id,Token,Instancia, Registros, DataliGar from DadosAPI"
      cursor.execute(GetDadosAPI)
-     cursor.commit()
+     data = cursor.fetchall()
+     for dados in data:
+         dadosapi.append({
+             "Id":dados[0],
+             "Token":dados[1],
+             "Instancia":dados[2],
+             "Registros":dados[3],
+         })
+
+     return render_template('home.html', output_data = dadosapi)
+   
         
 
 

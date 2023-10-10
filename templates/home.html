@@ -10,10 +10,29 @@
 </head>
     <div id="logo-container" class="header"></div>
     <div >
-        <body>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Token</th>
+                <th>Instancia</th>
+                <th>Registros</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for row in output_data %}
+                    <tr>
+                        <td>{{row[0]}}</td>
+                        <td>{{row[1]}}</td>
+                        <td>{{row[2]}}</td>
+                        <td>{{row[3]}}</td>
+                    </tr>
+                {% endfor %}       
+            </tbody>
+        </table>
         <form method="POST">
                 <label for="Token">Token:</label>
-                <input type="text" name="Token" id="Token">
+                <input type="text" name="Token" id="Token" >
                 <label for="Instancia">Instancia: </label>
                 <input type="text" name="Instancia" id="Instancia">
                 <label for="Registros">Número de Registros </label>
@@ -23,6 +42,7 @@
                 <p>
                 <button type="submit">Gravar</button>
          </form>
+
                 <section class="modal">
                         <div id="card">
                             <h1>{{msg}}</h2>
@@ -64,6 +84,7 @@
                 </section>
                 {% endif %} 
                 <br><br>
+               
                 <footer>
                     <p></p>
                     <p>Autor: Paulo Andre Moraes<br>
