@@ -60,7 +60,26 @@ input[type=submit]:hover {
   font-size: 30px;
   text-align: center;
   background-size: contain;
+  display: flex;
 
+}
+.bar {
+  flex: 1;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
 
 footer {

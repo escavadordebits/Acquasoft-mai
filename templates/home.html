@@ -8,89 +8,94 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.js"></script>	
     <title>Acquasoft</title>
 </head>
-    <div id="logo-container" class="header"></div>
-    <div >
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Token</th>
-                <th>Instancia</th>
-                <th>Registros</th>
-            </tr>
-            </thead>
-            <tbody>
-                {% for row in output_data %}
-                    <tr>
-                        <td>{{row[0]}}</td>
-                        <td>{{row[1]}}</td>
-                        <td>{{row[2]}}</td>
-                        <td>{{row[3]}}</td>
-                    </tr>
-                {% endfor %}       
-            </tbody>
-        </table>
+<body>
+  <div id="logo-container" class="header"></div>
+  <br>  
+  <div>
+    <table>
+      <tr>
+        {% for header in headings %}  
+        <th>{{header}}</th>
+        {% endfor %}  
+      </tr>
+      {% for row in data %}
+      <tr>
+          <td>{{row.Id}}</td>
+          <td>{{row.Token}}</td>
+          <td>{{row.Instancia}}</td>
+          <td>{{row.Registros}}</td>
+      </tr>
+      {% endfor %}  
+    </table>
+  <br>  
+  </div>
+    
+      <div>     
         <form method="POST">
-                <label for="Token">Token:</label>
-                <input type="text" name="Token" id="Token" >
-                <label for="Instancia">Instancia: </label>
-                <input type="text" name="Instancia" id="Instancia">
-                <label for="Registros">Número de Registros </label>
-                <input type="text" name="Registros" id="Registros">
-                <label for="DataLigar">Data Ligar </label>
-                <input type="text" name="DataLigar" id="DataLigar">
-                <p>
-                <button type="submit">Gravar</button>
-         </form>
-
-                <section class="modal">
-                        <div id="card">
-                            <h1>{{msg}}</h2>
-                        </div>
-                </section>
-            <div>
-                <br>
-                <form  method="get">
-                    Parar Instancia: <input type="text" name="Instancia" id="Instancia">
-                    <hr>
-                    <div >
+                        <label for="Token">Token:</label>
+                        <input type="text" name="Token" id="Token" >
+                        <label for="Instancia">Instancia: </label>
+                        <input type="text" name="Instancia" id="Instancia">
+                        <label for="Registros">Número de Registros </label>
+                        <input type="text" name="Registros" id="Registros">
+                        <label for="DataLigar">Data Ligar </label>
+                        <input type="text" name="DataLigar" id="DataLigar">
+                        <p>
+                        <button type="submit">Gravar</button>
+                 </form>
+        
+                        <section class="modal">
+                                <div id="card">
+                                    <h1>{{msg}}</h2>
+                                </div>
+                        </section>
+                    <div>
+                        <br>
+                        <form  method="get">
+                            Parar Instancia: <input type="text" name="Instancia" id="Instancia">
+                            <hr>
                             <div >
-                                 <button type="submit">Gravar</button>
+                                    <div >
+                                         <button type="submit">Gravar</button>
+                                    </div>
+                            <br>
+                        </form>
+                    
+                        <br>
+                    </div>
+                    <label >Envio de Mensagens:</label>
+                  
+                        <form action="EnviarMsg" method="post">
+                        <hr>
+                        <div >
+                            <div >
+                                <button type="Submit">Enviar Mensagens</button>
                             </div>
-                    <br>
-                </form>
-            
-                <br>
-            </div>
-            <label >Envio de Mensagens:</label>
-          
-                <form action="EnviarMsg" method="post">
-                <hr>
-                <div >
-                    <div >
-                        <button type="Submit">Enviar Mensagens</button>
-                    </div>
-                </form>
-                <br>
-                <div>
+                        </form>
+                        <br>
+                        <div>
+        
+                        </div>
+                        <br>
+                        {% if status == "Enviando" %}
+                        <section>
+                            <div  class="containerbar">
+                                <div class="progress-bar"></div>
+                            </div>
+                        </section>
+                        {% endif %} 
+                        <br><br>
+                       
+                        <footer>
+                            <p></p>
+                            <p>Autor: Paulo Andre Moraes<br>
+                            <a href="mailto:sapemailb1@gmail.com">sapemailb1@gmail.com</a></p>
+                        </footer>
+                     
+        
+        </div>
+        
+        
 
-                </div>
-                <br>
-                {% if status == "Enviando" %}
-                <section>
-                    <div  class="containerbar">
-                        <div class="progress-bar"></div>
-                    </div>
-                </section>
-                {% endif %} 
-                <br><br>
-               
-                <footer>
-                    <p></p>
-                    <p>Autor: Paulo Andre Moraes<br>
-                    <a href="mailto:sapemailb1@gmail.com">sapemailb1@gmail.com</a></p>
-                </footer>
-             
-        </body>
-    </div>
+</body>
 </html>

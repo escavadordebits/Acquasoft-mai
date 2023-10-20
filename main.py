@@ -42,16 +42,13 @@ def Get_DadosAPI():
      cursor = cnxn.cursor()
      GetDadosAPI  =f"select Id,Token,Instancia, Registros, DataliGar from DadosAPI"
      cursor.execute(GetDadosAPI)
-     data = cursor.fetchall()
-     for dados in data:
-         dadosapi.append({
-             "Id":dados[0],
-             "Token":dados[1],
-             "Instancia":dados[2],
-             "Registros":dados[3],
-         })
-
-     return render_template('home.html', output_data = dadosapi)
+    # data = cursor.fetchall()
+    # headings = ("ID","Token","Instancia", "Registros")
+     headings = ("ID","Token","Instancia")
+     data = (("1","TokenTeste","Inst.Testes","RegistroTeste"))
+     return headings
+     
+   
    
         
 
